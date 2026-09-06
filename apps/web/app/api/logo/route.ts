@@ -82,25 +82,28 @@ const logoDefinitions: Record<LogoType, LogoTypeDefinition> = {
     fallback: `${WEBAPP_URL}${APPLE_TOUCH_ICON}`,
     w: 180,
     h: 180,
-    source: "appLogo",
+    // Square targets use the icon mark rather than the wordmark: resize() below
+    // uses sharp's default "cover" fit, which would otherwise center-crop a wide
+    // wordmark logo into an unrecognizable fragment.
+    source: "appIconLogo",
   },
   mstile: {
     fallback: `${WEBAPP_URL}${MSTILE_ICON}`,
     w: 150,
     h: 150,
-    source: "appLogo",
+    source: "appIconLogo",
   },
   "android-chrome-192": {
     fallback: `${WEBAPP_URL}${ANDROID_CHROME_ICON_192}`,
     w: 192,
     h: 192,
-    source: "appLogo",
+    source: "appIconLogo",
   },
   "android-chrome-256": {
     fallback: `${WEBAPP_URL}${ANDROID_CHROME_ICON_256}`,
     w: 256,
     h: 256,
-    source: "appLogo",
+    source: "appIconLogo",
   },
 };
 

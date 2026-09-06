@@ -10,8 +10,7 @@
 "use client";
 
 import { DefaultSeo } from "next-seo";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Playfair_Display } from "next/font/google";
 import Head from "next/head";
 import Script from "next/script";
 
@@ -33,12 +32,13 @@ export interface CalPageWrapper {
 }
 
 const interFont = Inter({ subsets: ["latin"], variable: "--font-sans", preload: true, display: "swap" });
-const calFont = localFont({
-  src: "../fonts/CalSans-SemiBold.woff2",
+// Selah Wellness uses an elegant serif for headings/titles to match the spa brand identity.
+const calFont = Playfair_Display({
+  subsets: ["latin"],
   variable: "--font-cal",
   preload: true,
   display: "swap",
-  weight: "600",
+  weight: ["600", "700"],
 });
 
 function PageWrapper(props: AppProps) {

@@ -1,7 +1,7 @@
 {
-    "name": "Cal.diy",
-    "short_name": "Cal.diy",
-    "description": "Scheduling infrastructure for absolutely everyone.",
+    "name": "Selah Wellness",
+    "short_name": "Selah",
+    "description": "Reserva tu momento de bienestar en Selah Wellness.",
     "icons": [
         {
             "src": "/api/logo?type=android-chrome-192",
@@ -14,8 +14,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#4A2F18",
+    "background_color": "#FBF3E7",
     "display_override": ["minimal-ui"],
     "display": "standalone",
     "scope": "/",

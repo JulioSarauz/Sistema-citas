@@ -3,8 +3,7 @@ import { loadTranslations } from "@calcom/i18n/server";
 import { IconSprites } from "@calcom/ui/components/icon";
 import { buildLegacyRequest } from "@lib/buildLegacyCtx";
 import { dir } from "i18next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Playfair_Display } from "next/font/google";
 import { cookies, headers } from "next/headers";
 import Script from "next/script";
 import type React from "react";
@@ -15,12 +14,13 @@ import { Providers } from "./providers";
 import { SpeculationRules } from "./SpeculationRules";
 
 const interFont = Inter({ subsets: ["latin"], variable: "--font-sans", preload: true, display: "swap" });
-const calFont = localFont({
-  src: "../fonts/CalSans-SemiBold.woff2",
+// Selah Wellness uses an elegant serif for headings/titles to match the spa brand identity.
+const calFont = Playfair_Display({
+  subsets: ["latin"],
   variable: "--font-cal",
   preload: true,
   display: "block",
-  weight: "600",
+  weight: ["600", "700"],
 });
 
 export const viewport = {
@@ -65,11 +65,9 @@ export const metadata = {
   },
   manifest: "/site.webmanifest",
   other: {
-    "application-TileColor": "#ff0000",
+    "application-TileColor": "#4A2F18",
   },
   twitter: {
-    site: "@calcom",
-    creator: "@calcom",
     card: "summary_large_image",
   },
   robots: {

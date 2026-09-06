@@ -9,8 +9,8 @@ type BookingView = "list" | "calendar";
 
 const viewParser = createParser({
   parse: (value: string) => {
-    if (value === "calendar") return "calendar";
-    return "list";
+    if (value === "list") return "list";
+    return "calendar";
   },
   serialize: (value: BookingView) => value,
 });
@@ -31,11 +31,12 @@ const createLocalStorageStore = () => {
     if (stored === "list" || stored === "calendar") {
       return stored;
     }
-    return "list";
+    // Selah Wellness defaults the admin bookings view to the calendar layout.
+    return "calendar";
   };
 
   const getServerSnapshot = (): BookingView => {
-    return "list";
+    return "calendar";
   };
 
   const notify = () => {
@@ -53,7 +54,7 @@ type UseBookingsViewOptions = {
 
 export function useBookingsView({ bookingsV3Enabled }: UseBookingsViewOptions) {
   // Always use "list" as the default for useQueryState to keep instances in sync
-  const [_view, setView] = useQueryState("view", viewParser.withDefault("list"));
+  const [_view, setView] = useQueryState("view", viewParser.withDefault("calendar"));
 
   // Track if we've completed the initial sync to prevent race conditions
   const isInitializedRef = useRef(false);

@@ -40,14 +40,20 @@ export const getLocale = async (
   const acceptLanguage =
     req.headers instanceof Headers ? req.headers.get("accept-language") : req.headers["accept-language"];
 
-  const languages = acceptLanguage ? parse(acceptLanguage) : [];
+  // Selah Wellness defaults to Latin American Spanish when the browser sends no
+  // Accept-Language hint at all, rather than falling back to English.
+  if (!acceptLanguage) {
+    return "es-419";
+  }
+
+  const languages = parse(acceptLanguage);
 
   const code: string = languages[0]?.code ?? "";
   const region: string = languages[0]?.region ?? "";
 
   // the code should consist of 2 or 3 lowercase letters
   // the regex underneath is more permissive
-  const testedCode = /^[a-zA-Z]+$/.test(code) ? code : "en";
+  const testedCode = /^[a-zA-Z]+$/.test(code) ? code : "es";
 
   // the code should consist of either 2 uppercase letters or 3 digits
   // the regex underneath is more permissive
